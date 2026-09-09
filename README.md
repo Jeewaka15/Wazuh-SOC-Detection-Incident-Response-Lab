@@ -1,0 +1,1 @@
+# Wazuh-SOC-Detection-Incident-Response-Lab
