@@ -129,7 +129,7 @@ Event ID: 4720
 Channel: Security
 Computer: IEWIN7
 ```
-![First Image](https://github.com/Jeewaka15/Wazuh-SOC-Detection-Incident-Response-Lab/blob/90abae508f6428e174190825747b9bcabfddd704/Incident_01/Evidence/(01.1)%20SOC_TestUser3%20windows-account-creation.png)
+![First Image](https://github.com/Jeewaka15/Wazuh-SOC-Detection-Incident-Response-Lab/blob/90abae508f6428e174190825747b9bcabfddd704/Incident_01/Evidence/(01)%20SOC_TestUser%20windows-account-creation.png)
 
 
 During the final validation test, the newly generated account was:
@@ -138,8 +138,7 @@ During the final validation test, the newly generated account was:
 SOC_TestUser3
 ```
 
-![Second Image](https://github.com/Jeewaka15/Wazuh-SOC-Detection-Incident-Response-Lab/blob/90abae508f6428e174190825747b9bcabfddd704/Incident_01/Evidence/(01)%20SOC_TestUser%20windows-account-creation.png)
-
+![Second Image](https://github.com/Jeewaka15/Wazuh-SOC-Detection-Incident-Response-Lab/blob/90abae508f6428e174190825747b9bcabfddd704/Incident_01/Evidence/(01.1)%20SOC_TestUser3%20windows-account-creation.png)
 
 ---
 
