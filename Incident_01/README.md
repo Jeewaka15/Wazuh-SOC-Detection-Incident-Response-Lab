@@ -96,15 +96,12 @@ The purpose was not to compromise the system, but to generate realistic Windows 
 
 ## Evidence 01 — Account Creation Command
 
-**[SCREENSHOT 01 — Windows 7 CMD showing the `net user` command and successful account creation]**
-
-Recommended screenshot:
 
 ```text
 Windows 7
 Command Prompt
 
-net user SOC_TestUser3 TestPassword123! /add
+net user SOC_TestUser3 hidemypassword /add
 
 The command completed successfully.
 ```
@@ -132,6 +129,8 @@ Event ID: 4720
 Channel: Security
 Computer: IEWIN7
 ```
+![First Image](https://github.com/Jeewaka15/Wazuh-SOC-Detection-Incident-Response-Lab/blob/90abae508f6428e174190825747b9bcabfddd704/Incident_01/Evidence/(01.1)%20SOC_TestUser3%20windows-account-creation.png)
+
 
 During the final validation test, the newly generated account was:
 
@@ -139,7 +138,12 @@ During the final validation test, the newly generated account was:
 SOC_TestUser3
 ```
 
+![Second Image](https://github.com/Jeewaka15/Wazuh-SOC-Detection-Incident-Response-Lab/blob/90abae508f6428e174190825747b9bcabfddd704/Incident_01/Evidence/(01)%20SOC_TestUser%20windows-account-creation.png)
+
+
 ---
+
+
 
 # 6. Wazuh Detection
 
@@ -172,7 +176,8 @@ This confirmed that the Windows 7 endpoint was successfully sending Security eve
 
 ## Evidence 02 — Wazuh Event
 
-**[SCREENSHOT 02 — Wazuh Dashboard showing Event ID 4720 / Rule 60109]**
+![Third Image](https://github.com/Jeewaka15/Wazuh-SOC-Detection-Incident-Response-Lab/blob/90abae508f6428e174190825747b9bcabfddd704/Incident_01/Evidence/(02)%20wazuh-event-4720.png)
+
 
 The screenshot should clearly show as many of these as possible:
 
@@ -184,6 +189,8 @@ The screenshot should clearly show as many of these as possible:
 * Subject user
 * MITRE ATT&CK `T1098`
 * Timestamp
+
+![Fourth Image](https://github.com/Jeewaka15/Wazuh-SOC-Detection-Incident-Response-Lab/blob/90abae508f6428e174190825747b9bcabfddd704/Incident_01/Evidence/(02.1)%20Terminal-event-4720.png)
 
 ---
 
@@ -287,7 +294,7 @@ The manager status was verified to ensure that the service was running correctly
 
 ## Evidence 03 — Wazuh Rule Configuration
 
-**[SCREENSHOT 03 — Ubuntu terminal showing the custom rule in `local_rules.xml`]**
+![Fifth Image](https://github.com/Jeewaka15/Wazuh-SOC-Detection-Incident-Response-Lab/blob/90abae508f6428e174190825747b9bcabfddd704/Incident_01/Evidence/(03)%20custom-rule-100101.png)
 
 The screenshot should show:
 
@@ -308,7 +315,7 @@ Windows local user account created - SOC Lab Detection
 After the Wazuh Manager was restarted, another controlled account creation event was generated on Windows 7:
 
 ```cmd
-net user SOC_TestUser3 TestPassword123! /add
+net user SOC_TestUser3 hidemypassword /add
 ```
 
 The Wazuh alert data was then searched for the custom rule:
@@ -325,7 +332,7 @@ This confirmed that the custom rule was not only configured correctly but also s
 
 ## Evidence 04 — Custom Rule Alert
 
-**[SCREENSHOT 04 — Ubuntu terminal showing Rule ID 100101 in `alerts.json`]**
+![Sixth Image](https://github.com/Jeewaka15/Wazuh-SOC-Detection-Incident-Response-Lab/blob/90abae508f6428e174190825747b9bcabfddd704/Incident_01/Evidence/(04)%20custom-alert-terminal.png)
 
 The important fields to capture are:
 
@@ -361,11 +368,13 @@ Agent: IEWIN7
 
 ## Evidence 05 — Wazuh Dashboard Custom Detection
 
-**[SCREENSHOT 05 — Wazuh Threat Hunting / Security Events showing Rule 100101]**
+![Seventh Image](https://github.com/Jeewaka15/Wazuh-SOC-Detection-Incident-Response-Lab/blob/90abae508f6428e174190825747b9bcabfddd704/Incident_01/Evidence/(05)%20wazuh-dashboard-rule-100101.png)
 
 This is one of the **most important screenshots** for the GitHub report.
 
 Try to capture the event details panel where possible.
+
+![Final Image](https://github.com/Jeewaka15/Wazuh-SOC-Detection-Incident-Response-Lab/blob/90abae508f6428e174190825747b9bcabfddd704/Incident_01/Evidence/(05.1)%20wazuh-dashboard-rule-100101.png)
 
 ---
 
@@ -413,7 +422,7 @@ The following evidence was collected during the investigation:
 ### Evidence A — Windows Activity
 
 ```text
-net user SOC_TestUser3 TestPassword123! /add
+net user SOC_TestUser3 hidemypassword /add
 ```
 
 Purpose:
@@ -612,7 +621,7 @@ sudo grep -a '"id":"100101"' /var/ossec/logs/alerts/alerts.json | tail -1
 ### Windows Account Creation
 
 ```cmd
-net user SOC_TestUser3 TestPassword123! /add
+net user SOC_TestUser3 hidemypassword /add
 ```
 
 ---
